@@ -14,3 +14,5 @@ build/
 environment_backup.txt
 sample.ipynb
 train.sh
+test_snr.py
+test_ssim.py
