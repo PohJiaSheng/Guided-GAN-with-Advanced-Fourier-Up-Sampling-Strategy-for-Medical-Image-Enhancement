@@ -1,0 +1,16 @@
+# .gitignore
+Comparison.png
+Framework_v1.png
+env.yml
+environment.yml
+*_pycache__/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+build/
+environment_backup.txt
+sample.ipynb
+train.sh
