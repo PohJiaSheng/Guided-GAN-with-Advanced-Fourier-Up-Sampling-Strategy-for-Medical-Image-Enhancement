@@ -134,8 +134,7 @@ class StyleNet(nn.Module):
         self.ae_dim_out = self.opt.ae_dim_out
 
         self.style_en_part1 = AutoEncoder(self.opt)
-        self.style_en_part1.load_state_dict(torch.load("pre_train/pre_train/checkpoint_epoch=299.ckpt", map_location='cpu')['state_dict'])
-        #self.style_en_part1.load_state_dict(torch.load("pre_train/pre_train/checkpoint_epoch=299.ckpt", map_location='cpu')['state_dict'], strict=False)
+        self.style_en_part1.load_state_dict(torch.load("pre_train/checkpoint_epoch=299.ckpt", map_location='cpu')['state_dict'])
 
         self.style_en_part2 = nn.ModuleList()
         for _ in range(self.num_domains):

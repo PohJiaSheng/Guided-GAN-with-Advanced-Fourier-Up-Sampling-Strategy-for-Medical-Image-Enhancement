@@ -20,7 +20,7 @@ def parse_args():
                         default=4)
     parser.add_argument('--work_dir',
                         type=str,
-                        default='checkpoints_fourier')
+                        default='checkpoints')
     args = parser.parse_args()
     return args
 
@@ -38,7 +38,6 @@ def main():
     # prepare data loader
     dataset = newCORNDataset(cfg.dataset)
     loader = DataLoader(dataset, cfg.imgs_per_gpu, shuffle=True, num_workers=cfg.workers_per_gpu, drop_last=True)
-    #loader = DataLoader(dataset, cfg.imgs_per_gpu, shuffle=True, num_workers=4, drop_last=True)
 
     # define model
     model = MODELS.build(name="rnw_star", option=cfg)
@@ -55,7 +54,6 @@ def main():
                       # accelerator="ddp",
                       default_root_dir=work_dir,
                       gpus=args.gpus,
-                      #gpus=[5],
                       num_nodes=1,
                       max_epochs=cfg.total_epochs,
                       callbacks=[checkpoint_callback],
