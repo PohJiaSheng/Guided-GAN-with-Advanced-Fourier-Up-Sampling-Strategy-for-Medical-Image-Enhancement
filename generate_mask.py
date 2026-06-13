@@ -36,12 +36,12 @@ def generate_mask(file_root, dilation_radius):
         img = cv2.imread(f_pth)
         mask_dilation = cv2.dilate(img, kernel)
         mask_background = mask_dilation - img
-        img_save_path = os.path.join(save_path, (f_pth.split("\\")[-1]).split('.')[0])
+        img_save_path = os.path.join(save_path, os.path.splitext(os.path.basename(f_pth))[0])
         img_save_path = img_save_path + ".jpg"
         cv2.imwrite(img_save_path, mask_background)
 
 
 if __name__ == "__main__":
-    dilation_r = 9
     img_root = "data/CORN_2/testB"
-    generate_mask(img_root, dilation_r)
+    for dilation_r in [9, 7, 5, 3]:
+        generate_mask(img_root, dilation_r)
